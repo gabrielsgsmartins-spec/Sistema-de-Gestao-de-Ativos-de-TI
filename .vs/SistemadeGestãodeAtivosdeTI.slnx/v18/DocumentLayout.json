@@ -1,0 +1,170 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|c:\\users\\gmartins\\desktop\\sistemadegest\u00E3odeativosdeti\\controllers\\equipamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|solutionrelative:controllers\\equipamentocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|c:\\users\\gmartins\\desktop\\sistemadegest\u00E3odeativosdeti\\services\\equipamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|solutionrelative:services\\equipamentoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|c:\\users\\gmartins\\desktop\\sistemadegest\u00E3odeativosdeti\\models\\equipamentomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|solutionrelative:models\\equipamentomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|c:\\users\\gmartins\\desktop\\sistemadegest\u00E3odeativosdeti\\models\\funcionariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|solutionrelative:models\\funcionariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|c:\\users\\gmartins\\desktop\\sistemadegest\u00E3odeativosdeti\\enums\\tipoequipamentoenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|solutionrelative:enums\\tipoequipamentoenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|c:\\users\\gmartins\\desktop\\sistemadegest\u00E3odeativosdeti\\data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|solutionrelative:data\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|c:\\users\\gmartins\\desktop\\sistemadegest\u00E3odeativosdeti\\repositorios\\equipamentorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|solutionrelative:repositorios\\equipamentorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|c:\\users\\gmartins\\desktop\\sistemadegest\u00E3odeativosdeti\\repositorios\\funcionariorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|solutionrelative:repositorios\\funcionariorepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|c:\\users\\gmartins\\desktop\\sistemadegest\u00E3odeativosdeti\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4464C7F-413E-0266-EF9F-2032AACD0647}|SistemadeGest\u00E3odeAtivosdeTI.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FuncionarioModel.cs",
+              "DocumentMoniker": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Models\\FuncionarioModel.cs",
+              "RelativeDocumentMoniker": "Models\\FuncionarioModel.cs",
+              "ToolTip": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Models\\FuncionarioModel.cs",
+              "RelativeToolTip": "Models\\FuncionarioModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T19:53:44.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EquipamentoService.cs",
+              "DocumentMoniker": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Services\\EquipamentoService.cs",
+              "RelativeDocumentMoniker": "Services\\EquipamentoService.cs",
+              "ToolTip": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Services\\EquipamentoService.cs",
+              "RelativeToolTip": "Services\\EquipamentoService.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAwwLgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T19:50:10.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EquipamentoController.cs",
+              "DocumentMoniker": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Controllers\\EquipamentoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EquipamentoController.cs",
+              "ToolTip": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Controllers\\EquipamentoController.cs",
+              "RelativeToolTip": "Controllers\\EquipamentoController.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAIwHcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T19:30:28.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EquipamentoModel.cs",
+              "DocumentMoniker": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Models\\EquipamentoModel.cs",
+              "RelativeDocumentMoniker": "Models\\EquipamentoModel.cs",
+              "ToolTip": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Models\\EquipamentoModel.cs",
+              "RelativeToolTip": "Models\\EquipamentoModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T19:53:45.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TipoEquipamentoEnum.cs",
+              "DocumentMoniker": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Enums\\TipoEquipamentoEnum.cs",
+              "RelativeDocumentMoniker": "Enums\\TipoEquipamentoEnum.cs",
+              "ToolTip": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Enums\\TipoEquipamentoEnum.cs",
+              "RelativeToolTip": "Enums\\TipoEquipamentoEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T19:54:11.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DbContext.cs",
+              "DocumentMoniker": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Data\\DbContext.cs",
+              "RelativeDocumentMoniker": "Data\\DbContext.cs",
+              "ToolTip": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Data\\DbContext.cs",
+              "RelativeToolTip": "Data\\DbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T20:16:53.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EquipamentoRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Repositorios\\EquipamentoRepositorio.cs",
+              "RelativeDocumentMoniker": "Repositorios\\EquipamentoRepositorio.cs",
+              "ToolTip": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Repositorios\\EquipamentoRepositorio.cs",
+              "RelativeToolTip": "Repositorios\\EquipamentoRepositorio.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAUwBIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T19:34:01.643Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FuncionarioRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Repositorios\\FuncionarioRepositorio.cs",
+              "RelativeDocumentMoniker": "Repositorios\\FuncionarioRepositorio.cs",
+              "ToolTip": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Repositorios\\FuncionarioRepositorio.cs",
+              "RelativeToolTip": "Repositorios\\FuncionarioRepositorio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T19:34:00.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\gmartins\\Desktop\\SistemadeGest\u00E3odeAtivosdeTI\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T18:54:26.975Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
