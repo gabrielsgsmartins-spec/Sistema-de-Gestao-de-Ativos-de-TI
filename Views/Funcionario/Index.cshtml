@@ -1,0 +1,95 @@
+﻿```cshtml
+@model IEnumerable<FuncionarioModel>
+
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1>Funcionários</h1>
+
+            <p class="text-muted">
+                Gerenciamento dos funcionários cadastrados
+            </p>
+        </div>
+
+        <a asp-controller="Funcionario"
+           asp-action="Adicionar"
+           class="btn btn-primary">
+            Novo funcionário
+        </a>
+
+    </div>
+
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            Nenhum funcionário cadastrado.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cargo</th>
+                        <th>CPF</th>
+                        <th>Departamento</th>
+                        <th>Equipamentos</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var funcionario in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @funcionario.Nome
+                            </td>
+
+                            <td>
+                                @funcionario.Cargo
+                            </td>
+
+                            <td>
+                                @funcionario.Cpf
+                            </td>
+
+                            <td>
+                                @funcionario.Departamento
+                            </td>
+                           
+                            <td>
+                                <a asp-controller="Funcionario"
+                                   asp-action="Dispositivos"
+                                   asp-route-id="@funcionario.Id"
+                                   class="btn btn-primary btn-sm">
+                                    Ver dispositivos
+                                </a>
+                            </td>
+                           
+
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+
+</div>
+```

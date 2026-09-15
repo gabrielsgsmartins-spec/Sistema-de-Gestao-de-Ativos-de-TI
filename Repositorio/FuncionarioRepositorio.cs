@@ -16,9 +16,10 @@ namespace SistemadeGestãodeAtivosdeTI.Repositorios
 
         public List<FuncionarioModel> ListarTodos()
         {
-            return _bancoContext.Funcionarios.ToList();
+            return _bancoContext.Funcionarios
+                .Include(f => f.Equipamentos)
+                .ToList();
         }
-
         public FuncionarioModel? BuscarPorId(int id)
         {
             return _bancoContext.Funcionarios.FirstOrDefault(f => f.Id == id);

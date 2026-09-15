@@ -1,0 +1,96 @@
+﻿@using SistemadeGestãodeAtivosdeTI.Enums
+@model FuncionarioModel
+
+@{
+    ViewData["Title"] = "Novo Funcionário";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1>Novo Funcionário</h1>
+            <p class="text-muted">Cadastre um novo funcionário.</p>
+        </div>
+
+        <a class="btn btn-secondary"
+           asp-controller="Funcionario"
+           asp-action="Index">
+            Voltar
+        </a>
+    </div>
+
+    <div class="card p-4">
+
+        <form asp-controller="Funcionario"
+              asp-action="Adicionar"
+              method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label asp-for="Nome">Nome</label>
+
+                    <input asp-for="Nome"
+                           class="form-control"
+                           placeholder="Digite o nome do funcionário" />
+
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Cargo">Cargo</label>
+
+                    <input asp-for="Cargo"
+                           class="form-control"
+                           placeholder="Digite o cargo" />
+
+                    <span asp-validation-for="Cargo" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Cpf">CPF</label>
+
+                    <input asp-for="Cpf"
+                           class="form-control"
+                           placeholder="000.000.000-00" />
+
+                    <span asp-validation-for="Cpf" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Departamento">Departamento</label>
+
+                    <select asp-for="Departamento" class="form-control">
+                        @foreach (var departamento in Enum.GetValues(typeof(DepartamentoEnum)))
+                        {
+                            <option value="@((int)departamento)">@departamento</option>
+                        }
+                    </select>
+
+                    <span asp-validation-for="Departamento" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="d-flex gap-2 mt-4">
+
+                <a class="btn btn-secondary"
+                   asp-controller="Funcionario"
+                   asp-action="Index">
+                    Cancelar
+                </a>
+
+                <button type="submit" class="btn btn-primary">
+                    Adicionar
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

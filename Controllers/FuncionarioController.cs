@@ -12,7 +12,10 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
         private readonly FuncionarioService _funcionarioService;
         private readonly IFuncionarioRepositorio _funcionarioRepositorio;
 
-        public FuncionarioController(FuncionarioService funcionarioService, IFuncionarioRepositorio funcionarioRepositorio, ApplicationDbContext bancoContext)
+        public FuncionarioController(
+            FuncionarioService funcionarioService,
+            IFuncionarioRepositorio funcionarioRepositorio,
+            ApplicationDbContext bancoContext)
         {
             _funcionarioService = funcionarioService;
             _funcionarioRepositorio = funcionarioRepositorio;
@@ -25,7 +28,7 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
 
             if (listaFuncionarios == null || !listaFuncionarios.Any())
             {
-                TempData["MensagemErro"] = "Nenhum funcionário Encontrado.";
+                TempData["MensagemErro"] = "Nenhum funcionário encontrado.";
             }
 
             return View(listaFuncionarios);
@@ -45,7 +48,10 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
                 if (ModelState.IsValid)
                 {
                     _funcionarioService.Cadastrar(funcionario);
-                    TempData["MensagemSucesso"] = "Funcionário cadastrado com sucesso!";
+
+                    TempData["MensagemSucesso"] =
+                        "Funcionário cadastrado com sucesso!";
+
                     return RedirectToAction("Index");
                 }
 
@@ -54,8 +60,22 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
             catch (Exception ex)
             {
                 TempData["MensagemErro"] = ex.Message;
+
                 return View(funcionario);
             }
+        }
+
+        [HttpGet]
+        public IActionResult Dispositivos(int id)
+        {
+            var funcionario = _funcionarioRepositorio.BuscarPorId(id);
+
+            if (funcionario == null)
+            {
+                return NotFound();
+            }
+
+            return View(funcionario);
         }
     }
 }

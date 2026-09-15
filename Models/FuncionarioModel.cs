@@ -16,7 +16,7 @@ namespace SistemadeGestãodeAtivosdeTI.Models
         public string? Cargo { get; set; }
 
         [Required(ErrorMessage = "Informe o CPF do funcionário.")]
-        [StringLength(14, MinimumLength = 14)]
+    
         public string? Cpf { get; set; }
 
         public DepartamentoEnum Departamento { get; set; }
