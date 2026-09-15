@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SistemaGestaoAtivos.Models;
-
+﻿using SistemadeGestãodeAtivosdeTI.Models;
 
 namespace SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces
 {
@@ -13,6 +10,5 @@ namespace SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces
         void Editar(EquipamentoModel equipamento);
         void Excluir(int id);
         EquipamentoModel? BuscarPorNumeroSerie(string numeroSerie);
-
     }
 }

@@ -10,5 +10,8 @@ namespace SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces
         void Adicionar(FuncionarioModel funcionario);
         void Editar(FuncionarioModel funcionario);
         void Excluir(int id);
+
+        FuncionarioModel? BuscarPorCpf(string cpf);
+
     }
 }

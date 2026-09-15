@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-
+using SistemadeGestãodeAtivosdeTI.Data;
 #nullable disable
 
 namespace SistemadeGestãodeAtivosdeTI.Migrations

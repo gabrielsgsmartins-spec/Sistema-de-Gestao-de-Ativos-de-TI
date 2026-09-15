@@ -1,13 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using SistemadeGestãodeAtivosdeTI.Data;
 using SistemadeGestãodeAtivosdeTI.Enums;
-using SistemaGestaoAtivos.Data;
-using System.Linq;
 
-namespace SistemaGestaoAtivos.Controllers
+namespace SistemadeGestãodeAtivosdeTI.Controllers
 {
     public class HomeController : Controller
     {
-        
         private readonly ApplicationDbContext _bancoContext;
 
         public HomeController(ApplicationDbContext bancoContext)
@@ -15,14 +13,13 @@ namespace SistemaGestaoAtivos.Controllers
             _bancoContext = bancoContext;
         }
 
-      
         public IActionResult Index()
         {
             var equipamentos = _bancoContext.Equipamentos.ToList();
 
             ViewBag.TotalProdutos = equipamentos.Count;
 
-            if(equipamentos.Count == 0)
+            if (equipamentos.Count == 0)
             {
                 ViewBag.Mensagem = "Nenhum equipamento cadastrado.";
             }

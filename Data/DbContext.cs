@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SistemadeGestãodeAtivosdeTI.Models;
-using SistemaGestaoAtivos.Models;
 
-namespace SistemaGestaoAtivos.Data
+namespace SistemadeGestãodeAtivosdeTI.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -14,5 +13,7 @@ namespace SistemaGestaoAtivos.Data
         public DbSet<EquipamentoModel> Equipamentos { get; set; }
 
         public DbSet<FuncionarioModel> Funcionarios { get; set; }
+
+        public DbSet<ManutencaoModel> Manutencoes { get; set; }
     }
 }

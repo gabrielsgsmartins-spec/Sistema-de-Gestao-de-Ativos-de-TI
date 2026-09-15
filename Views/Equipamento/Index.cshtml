@@ -1,0 +1,106 @@
+﻿@model IEnumerable<EquipamentoModel>
+
+@{
+    ViewData["Title"] = "Equipamentos";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1>Equipamentos</h1>
+            <p class="text-muted">
+                Gerenciamento dos equipamentos de TI
+            </p>
+        </div>
+
+        <a asp-controller="Equipamento"
+           asp-action="Adicionar"
+           class="btn btn-primary">
+            Novo equipamento
+        </a>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            Nenhum equipamento cadastrado.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Número de Série</th>
+                        <th>Status</th>
+                        <th>Data de Compra</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var equipamento in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @equipamento.TipoEquipamento
+                            </td>
+
+                            <td>
+                                @equipamento.Marca
+                            </td>
+
+                            <td>
+                                @equipamento.Modelo
+                            </td>
+
+                            <td>
+                                @equipamento.NumeroSerie
+                            </td>
+
+                            <td>
+                                @equipamento.Status
+                            </td>
+
+                            <td>
+                                @equipamento.DataCompra.ToString("dd/MM/yyyy")
+                            </td>
+
+                            <td>
+
+                                <a asp-controller="Equipamento"
+                                   asp-action="Editar"
+                                   asp-route-id="@equipamento.Id"
+                                   class="btn btn-sm btn-outline-primary">
+                                    Editar
+                                </a>
+
+                                <a asp-controller="Equipamento"
+                                   asp-action="Atribuir"
+                                   asp-route-id="@equipamento.Id"
+                                   class="btn btn-sm btn-outline-secondary">
+                                    Atribuir
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+
+</div>

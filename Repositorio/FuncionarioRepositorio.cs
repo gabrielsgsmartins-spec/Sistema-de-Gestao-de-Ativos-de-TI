@@ -1,39 +1,38 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SistemadeGestãodeAtivosdeTI.Data;
 using SistemadeGestãodeAtivosdeTI.Models;
 using SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace SistemadeGestãodeAtivosdeTI.Repositorios
 {
     public class FuncionarioRepositorio : IFuncionarioRepositorio
     {
-        private readonly DbContext _bancoContext;
+        private readonly ApplicationDbContext _bancoContext;
 
-        public FuncionarioRepositorio(DbContext bancoContext)
+        public FuncionarioRepositorio(ApplicationDbContext bancoContext)
         {
             _bancoContext = bancoContext;
         }
 
         public List<FuncionarioModel> ListarTodos()
         {
-            return _bancoContext.Set<FuncionarioModel>().ToList();
+            return _bancoContext.Funcionarios.ToList();
         }
 
         public FuncionarioModel? BuscarPorId(int id)
         {
-            return _bancoContext.Set<FuncionarioModel>().FirstOrDefault(f => f.Id == id);
+            return _bancoContext.Funcionarios.FirstOrDefault(f => f.Id == id);
         }
 
         public void Adicionar(FuncionarioModel funcionario)
         {
-            _bancoContext.Set<FuncionarioModel>().Add(funcionario);
+            _bancoContext.Funcionarios.Add(funcionario);
             _bancoContext.SaveChanges();
         }
 
         public void Editar(FuncionarioModel funcionario)
         {
-            _bancoContext.Set<FuncionarioModel>().Update(funcionario);
+            _bancoContext.Funcionarios.Update(funcionario);
             _bancoContext.SaveChanges();
         }
 
@@ -42,9 +41,14 @@ namespace SistemadeGestãodeAtivosdeTI.Repositorios
             var funcionario = BuscarPorId(id);
             if (funcionario != null)
             {
-                _bancoContext.Set<FuncionarioModel>().Remove(funcionario);
+                _bancoContext.Funcionarios.Remove(funcionario);
                 _bancoContext.SaveChanges();
             }
+        }
+
+        public FuncionarioModel? BuscarPorCpf(string cpf)
+        {
+            return _bancoContext.Funcionarios.FirstOrDefault(f => f.Cpf == cpf);
         }
     }
 }

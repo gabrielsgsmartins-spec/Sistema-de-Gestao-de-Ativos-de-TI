@@ -1,70 +1,57 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using SistemadeGestãodeAtivosdeTI.Data;
 using SistemadeGestãodeAtivosdeTI.Enums;
 using SistemadeGestãodeAtivosdeTI.Models;
-using SistemaGestaoAtivos.Models;
+using SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces;
+using SistemadeGestãodeAtivosdeTI.Services;
 
 namespace SistemadeGestãodeAtivosdeTI.Controllers
 {
     public class EquipamentoController : Controller
     {
-        private readonly DbContext _bancoContext;
+        private readonly ApplicationDbContext _bancoContext;
         private readonly EquipamentoService _equipamentoService;
         private readonly IEquipamentoRepositorio _equipamentoRepositorio;
-        public EquipamentoController(EquipamentoService equipamentoService, IEquipamentoRepositorio equipamentoRepositorio, DbContext bancoContext)
+
+        public EquipamentoController(EquipamentoService equipamentoService, IEquipamentoRepositorio equipamentoRepositorio, ApplicationDbContext bancoContext)
         {
             _equipamentoService = equipamentoService;
             _equipamentoRepositorio = equipamentoRepositorio;
             _bancoContext = bancoContext;
         }
 
-
         public IActionResult Index()
         {
-            // Busca todos os equipamentos cadastrados
             var listaEquipamentos = _equipamentoRepositorio.ListarTodos();
-
-            // Passa a lista para a View
             return View(listaEquipamentos);
         }
-
 
         [HttpGet]
         public IActionResult Adicionar()
         {
-            ViewBag.Tipos = _equipamentoRepositorio.ListarTodos();
-
+            ViewBag.Tipos = Enum.GetValues(typeof(TipoEquipamentoEnum));
             return View();
         }
-
 
         [HttpPost]
         public IActionResult Adicionar(EquipamentoModel equipamento)
         {
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    if (ModelState.IsValid)
-                    {
-                        _equipamentoService.Cadastrar(equipamento);
-                        TempData["MensagemSucesso"] = "Equipamento cadastrado com sucesso!";
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        ViewBag.Tipos = _equipamentoRepositorio.ListarTodos();
-                        return View(equipamento);
-                    }
-
+                    _equipamentoService.Cadastrar(equipamento);
+                    TempData["MensagemSucesso"] = "Equipamento cadastrado com sucesso!";
+                    return RedirectToAction("Index");
                 }
-                catch (Exception erro)
-                {
-                    TempData["MensagemErro"] =
-                        $"Erro ao cadastrar: {erro.InnerException?.Message ?? erro.Message}";
 
-                    return View(equipamento);
-                }
+                ViewBag.Tipos = Enum.GetValues(typeof(TipoEquipamentoEnum));
+                return View("Adicionar", equipamento);
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao cadastrar: {erro.InnerException?.Message ?? erro.Message}";
+                return View(equipamento);
             }
         }
 
@@ -77,7 +64,8 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
                 TempData["MensagemErro"] = "Equipamento não encontrado.";
                 return RedirectToAction("Index");
             }
-            ViewBag.Funcionarios = _bancoContext.Set<FuncionarioModel>().ToList();
+
+            ViewBag.Funcionarios = _bancoContext.Funcionarios.ToList();
             return View(equipamento);
         }
 
@@ -92,12 +80,10 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
             }
             catch (Exception erro)
             {
-                TempData["MensagemErro"] =
-                    $"Erro ao atribuir: {erro.InnerException?.Message ?? erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao atribuir: {erro.InnerException?.Message ?? erro.Message}";
                 return RedirectToAction("Atribuir", new { id = equipamentoId });
             }
         }
-
 
         [HttpGet]
         public IActionResult Editar(int id)
@@ -108,7 +94,8 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
                 TempData["MensagemErro"] = "Equipamento não encontrado.";
                 return RedirectToAction("Index");
             }
-            ViewBag.Tipos = _equipamentoRepositorio.ListarTodos();
+
+            ViewBag.Tipos = Enum.GetValues(typeof(TipoEquipamentoEnum));
             return View(equipamento);
         }
 
@@ -117,23 +104,18 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
         {
             try
             {
-
                 if (equipamento == null)
                 {
                     return NotFound();
                 }
-                else
-                {
-                    _equipamentoService.Atualizar(equipamento);
-                    TempData["MensagemSucesso"] = "Equipamento editado com sucesso!";
-                    return RedirectToAction("Index");
-                }
+
+                _equipamentoService.Atualizar(equipamento);
+                TempData["MensagemSucesso"] = "Equipamento editado com sucesso!";
+                return RedirectToAction("Index");
             }
             catch (Exception erro)
             {
-                TempData["MensagemErro"] =
-                    $"Erro ao editar: {erro.InnerException?.Message ?? erro.Message}";
-
+                TempData["MensagemErro"] = $"Erro ao editar: {erro.InnerException?.Message ?? erro.Message}";
                 return View(equipamento);
             }
         }
