@@ -100,6 +100,7 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
         public IActionResult Editar(EquipamentoModel equipamento)
         {
             try
@@ -109,13 +110,41 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
                     return NotFound();
                 }
 
-                _equipamentoService.Atualizar(equipamento);
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.Tipos = Enum.GetValues(typeof(TipoEquipamentoEnum));
+                    return View(equipamento);
+                }
+
+                var equipamentoBanco = _equipamentoRepositorio.BuscarPorId(equipamento.Id);
+
+                if (equipamentoBanco == null)
+                {
+                    TempData["MensagemErro"] = "Equipamento não encontrado.";
+                    return RedirectToAction("Index");
+                }
+
+                equipamentoBanco.TipoEquipamento = equipamento.TipoEquipamento;
+                equipamentoBanco.Marca = equipamento.Marca;
+                equipamentoBanco.Modelo = equipamento.Modelo;
+                equipamentoBanco.NumeroSerie = equipamento.NumeroSerie;
+                equipamentoBanco.DataCompra = equipamento.DataCompra;
+                equipamentoBanco.ValorCompra = equipamento.ValorCompra;
+                equipamentoBanco.Status = equipamento.Status;
+
+                _equipamentoRepositorio.Editar(equipamentoBanco);
+
                 TempData["MensagemSucesso"] = "Equipamento editado com sucesso!";
+
                 return RedirectToAction("Index");
             }
             catch (Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao editar: {erro.InnerException?.Message ?? erro.Message}";
+                TempData["MensagemErro"] =
+                    $"Erro ao editar: {erro.InnerException?.Message ?? erro.Message}";
+
+                ViewBag.Tipos = Enum.GetValues(typeof(TipoEquipamentoEnum));
+
                 return View(equipamento);
             }
         }

@@ -1,8 +1,86 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<EquipamentoModel>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<div class="dashboard">
+
+    <header class="dashboard-header">
+        <h1>Dashboard</h1>
+        <p>Visão geral dos ativos de TI</p>
+    </header>
+
+
+    <section class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <h2>Total de equipamentos</h2>
+            <p>@ViewBag.TotalEquipamentos</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>Equipamentos disponíveis</h2>
+            <p>@ViewBag.Disponiveis</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>Equipamentos em uso</h2>
+            <p>@ViewBag.EmUso</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>Em manutenção</h2>
+            <p>@ViewBag.EmManutencao</p>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>Funcionários</h2>
+            <p>@ViewBag.TotalFuncionarios</p>
+        </div>
+
+    </section>
+
+
+    <section class="equipamentos">
+
+        <h2>Equipamentos cadastrados</h2>
+
+        @if (Model == null || Model.Count == 0)
+        {
+            <p>Nenhum equipamento cadastrado.</p>
+        }
+        else
+        {
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Número de Série</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var equipamento in Model)
+                    {
+                        <tr>
+                            <td>@equipamento.TipoEquipamento</td>
+                            <td>@equipamento.Marca</td>
+                            <td>@equipamento.Modelo</td>
+                            <td>@equipamento.NumeroSerie</td>
+                            <td>@equipamento.Status</td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        }
+
+    </section>
+
 </div>

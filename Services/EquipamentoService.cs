@@ -47,6 +47,7 @@ namespace SistemadeGestãodeAtivosdeTI.Services
             {
                 throw new Exception("O equipamento já está atribuído a outro funcionário.");
             }
+    
 
             equipamento.FuncionarioId = funcionarioId;
             equipamento.Status = StatusEquipamentoEnum.EmUso;

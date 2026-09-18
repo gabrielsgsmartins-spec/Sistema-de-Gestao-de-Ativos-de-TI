@@ -1,73 +1,41 @@
-﻿```cshtml
-@model FuncionarioModel
+﻿@model SistemadeGestãodeAtivosdeTI.Models.FuncionarioModel
 
 @{
     ViewData["Title"] = "Dispositivos";
 }
 
-<div class="container mt-4">
+<h1>Dispositivos de @Model.Nome</h1>
 
-    <h1>Dispositivos de @Model.Nome</h1>
+@if (Model.Equipamentos == null || !Model.Equipamentos.Any())
+{
+    <p>Este funcionário não possui dispositivos atribuídos.</p>
+}
+else
+{
+    <table class="table">
 
-    <p class="text-muted">
-        Equipamentos atribuídos a este funcionário.
-    </p>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Número de Série</th>
+                <th>Status</th>
+            </tr>
+        </thead>
 
-    <hr />
+        <tbody>
+            @foreach (var equipamento in Model.Equipamentos)
+            {
+                <tr>
+                    <td>@equipamento.TipoEquipamento</td>
+                    <td>@equipamento.Marca</td>
+                    <td>@equipamento.Modelo</td>
+                    <td>@equipamento.NumeroSerie</td>
+                    <td>@equipamento.Status</td>
+                </tr>
+            }
+        </tbody>
 
-    @if (Model.Equipamentos == null || !Model.Equipamentos.Any())
-    {
-        <div class="alert alert-info">
-            Este funcionário não possui dispositivos atribuídos.
-        </div>
-    }
-    else
-    {
-        <div class="table-responsive">
-
-            <table class="table table-hover">
-
-                <thead>
-                    <tr>
-                        <th>Dispositivo</th>
-                        <th>Tipo</th>
-                        <th>Patrimônio</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    @foreach (var equipamento in Model.Equipamentos)
-                    {
-                        <tr>
-
-                            <td>
-                                @equipamento.Marca
-                            </td>
-
-                            <td>
-                                @equipamento.Modelo
-                            </td>
-
-                            <td>
-                                @equipamento.TipoEquipamento
-                            </td>
-
-                        </tr>
-                    }
-
-                </tbody>
-
-            </table>
-
-        </div>
-    }
-
-    <a asp-controller="Funcionario"
-       asp-action="Index"
-       class="btn btn-secondary">
-        Voltar
-    </a>
-
-</div>
-```
+    </table>
+}

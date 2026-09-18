@@ -22,9 +22,17 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
             _bancoContext = bancoContext;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string pesquisa)
         {
             var listaFuncionarios = _funcionarioRepositorio.ListarTodos();
+
+            if (!string.IsNullOrWhiteSpace(pesquisa))
+            {
+                listaFuncionarios = listaFuncionarios
+                    .Where(f =>
+                        f.Nome.Contains(pesquisa))
+                    .ToList();
+            }
 
             if (listaFuncionarios == null || !listaFuncionarios.Any())
             {
@@ -33,6 +41,8 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
 
             return View(listaFuncionarios);
         }
+
+
 
         [HttpGet]
         public IActionResult Adicionar()
@@ -68,13 +78,22 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
         [HttpGet]
         public IActionResult Dispositivos(int id)
         {
-            var funcionario = _funcionarioRepositorio.BuscarPorId(id);
+            var funcionario = _funcionarioService.BuscarDispositivos(id);
 
             if (funcionario == null)
             {
                 return NotFound();
             }
 
+            return View(funcionario);
+        }
+        public IActionResult BUscarFuncionario(int id)
+        {
+            var funcionario = _funcionarioRepositorio.BuscarPorId(id);
+            if (funcionario == null)
+            {
+                return NotFound();
+            }
             return View(funcionario);
         }
     }

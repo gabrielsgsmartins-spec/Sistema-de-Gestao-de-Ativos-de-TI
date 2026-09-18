@@ -87,21 +87,9 @@ namespace SistemadeGestãodeAtivosdeTI.Services
             return funcionario;
         }
 
-        public int EquipamentosReservados(int funcionarioId)
+        public FuncionarioModel? BuscarDispositivos(int id)
         {
-            var funcionario = _funcionarioRepositorio.BuscarPorId(funcionarioId);
-
-            if (funcionario == null)
-            {
-                throw new Exception("Funcionário não encontrado.");
-            }
-
-            if (funcionario.Equipamentos.Count == 0)
-            {
-                throw new Exception("O funcionário não possui equipamentos reservados");
-            }
-
-            return funcionario.Equipamentos.Count;
+            return _funcionarioRepositorio.BuscarDispositivos(id);
         }
     }
 }

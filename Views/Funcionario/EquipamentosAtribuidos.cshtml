@@ -1,5 +1,41 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<SistemadeGestãodeAtivosdeTI.Models.EquipamentoModel>
+
 @{
+    ViewData["Title"] = "Dispositivos atribuídos";
+}
+
+<h1>Dispositivos atribuídos</h1>
+@*Aqui eu estou fazendo um if para a action de atribuição *@
+@if (!Model.Any())
+{
+    <p>Nenhum dispositivo atribuído a este funcionário.</p>
+}
+else
+{
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Número de Série</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var equipamento in Model)
+            {
+                <tr>
+                    <td>@equipamento.TipoEquipamento</td>
+                    <td>@equipamento.Marca</td>
+                    <td>@equipamento.Modelo</td>
+                    <td>@equipamento.NumeroSerie</td>
+                    <td>@equipamento.Status</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
 }

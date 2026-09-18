@@ -51,5 +51,12 @@ namespace SistemadeGestãodeAtivosdeTI.Repositorios
         {
             return _bancoContext.Funcionarios.FirstOrDefault(f => f.Cpf == cpf);
         }
+
+        public FuncionarioModel? BuscarDispositivos(int id)
+        {
+            return _bancoContext.Funcionarios
+                .Include(f => f.Equipamentos)
+                .FirstOrDefault(f => f.Id == id);
+        }
     }
 }

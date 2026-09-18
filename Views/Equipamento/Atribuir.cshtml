@@ -1,24 +1,10 @@
 ﻿@model EquipamentoModel
+@using SistemadeGestãodeAtivosdeTI.Enums
+
 @{
     ViewData["Title"] = "Atribuir Equipamento";
 }
-
-<div class="container mt-4">
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <h1>Atribuir Equipamento</h1>
-            <p class="text-muted">Selecione o funcionário que vai receber este equipamento.</p>
-        </div>
-
-        <a class="btn btn-secondary"
-           asp-controller="Equipamento"
-           asp-action="Index">
-            Voltar
-        </a>
-    </div>
-
-    <div class="card p-4">
+  @* DADOS DO EQUIPAMENTO *@
 
         <h5 class="mb-3">Dados do equipamento</h5>
 
@@ -46,58 +32,65 @@
 
         </div>
 
-        <hr />
-
-        @if (ViewBag.Funcionarios == null || ViewBag.Funcionarios.Count == 0)
-        {
-            <div class="alert alert-warning">
-                Nenhum funcionário cadastrado ainda. Você precisa cadastrar um funcionário antes de atribuir este equipamento.
-            </div>
-
-            <a class="btn btn-primary"
-               asp-controller="Funcionario"
-               asp-action="Adicionar">
-                Cadastrar funcionário
-            </a>
-        }
-        else
-        {
-            <form asp-controller="Equipamento"
-                  asp-action="Atribuir"
-                  method="post">
-
-                <input type="hidden" name="equipamentoId" value="@Model.Id" />
-
-                <div class="form-group mb-3">
-                    <label for="funcionarioId">Funcionário</label>
-
-                    <select name="funcionarioId" class="form-control" required>
-                        <option value="">Selecione um funcionário...</option>
-
-                        @foreach (var funcionario in ViewBag.Funcionarios)
-                        {
-                            <option value="@funcionario.Id">@funcionario.Nome</option>
-                        }
-                    </select>
-                </div>
-
-                <div class="d-flex gap-2 mt-4">
-
-                    <a class="btn btn-secondary"
-                       asp-controller="Equipamento"
-                       asp-action="Index">
-                        Cancelar
-                    </a>
-
-                    <button type="submit" class="btn btn-primary">
-                        Atribuir
-                    </button>
-
-                </div>
-
-            </form>
-        }
-
+@if (Model.Status == StatusEquipamentoEnum.EmUso)
+{
+    <div class="alert alert-danger">
+        Este equipamento já está atribuído a um funcionário e não pode ser atribuído novamente.
     </div>
 
-</div>
+    <div class"Button">
+                 
+ <a class="btn btn-primary"
+   asp-controller="Funcionario"
+   asp-action="Dispositivos"
+   asp-route-id="@Model.FuncionarioId">
+    Ver dispositivos atribuídos
+</a>
+    </div>
+
+}
+else
+{
+    <form asp-controller="Equipamento"
+          asp-action="Atribuir"
+          method="post">
+
+        <input type="hidden"
+               name="equipamentoId"
+               value="@Model.Id" />
+
+        <div class="form-group mb-3">
+            <label for="funcionarioId">Funcionário</label>
+
+            <select name="funcionarioId"
+                    class="form-control"
+                    required>
+
+                <option value="">Selecione um funcionário...</option>
+
+                @foreach (var funcionario in ViewBag.Funcionarios)
+                {
+                    <option value="@funcionario.Id">
+                        @funcionario.Nome
+                    </option>
+                }
+
+            </select>
+        </div>
+
+        <div class="d-flex gap-2 mt-4">
+
+            <a class="btn btn-secondary"
+               asp-controller="Equipamento"
+               asp-action="Index">
+                Cancelar
+            </a>
+
+            <button type="submit" class="btn btn-primary">
+                Atribuir
+            </button>
+
+        </div>
+
+    </form>
+}
