@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SistemadeGestãodeAtivosdeTI.Data;
 using SistemadeGestãodeAtivosdeTI.Enums;
 using SistemadeGestãodeAtivosdeTI.Models;
 using SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces;
 using SistemadeGestãodeAtivosdeTI.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemadeGestãodeAtivosdeTI.Controllers
 {
+    [Authorize]
+
     public class EquipamentoController : Controller
     {
         private readonly ApplicationDbContext _bancoContext;
@@ -70,6 +77,7 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin,Tecnico")]
         public IActionResult Atribuir(int equipamentoId, int funcionarioId)
         {
             try
@@ -99,7 +107,6 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
             return View(equipamento);
         }
 
-        [HttpPost]
         [HttpPost]
         public IActionResult Editar(EquipamentoModel equipamento)
         {

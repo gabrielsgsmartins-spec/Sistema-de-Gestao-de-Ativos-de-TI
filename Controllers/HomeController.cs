@@ -7,9 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using SistemadeGestãodeAtivosdeTI.Data;
 using SistemadeGestãodeAtivosdeTI.Models;
 using SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SistemadeGestãodeAtivosdeTI.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _bancoContext;

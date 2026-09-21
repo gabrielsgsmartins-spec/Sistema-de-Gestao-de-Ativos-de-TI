@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using SistemadeGestãodeAtivosdeTI.Data;
 using SistemadeGestãodeAtivosdeTI.Models;
 using SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces;
@@ -37,14 +38,24 @@ namespace SistemadeGestãodeAtivosdeTI.Repositorios
             _bancoContext.SaveChanges();
         }
 
-        public void Excluir(int id)
+        public bool Excluir(int id)
         {
+            // Verifica se existem equipamentos vinculados ao funcionário
+            var possuiEquipamentos = _bancoContext.Equipamentos.Any(e => e.FuncionarioId == id);
+            if (possuiEquipamentos)
+            {
+                return false; // Não permite exclusão quando houver equipamentos vinculados
+            }
+
             var funcionario = BuscarPorId(id);
             if (funcionario != null)
             {
                 _bancoContext.Funcionarios.Remove(funcionario);
                 _bancoContext.SaveChanges();
+                return true;
             }
+
+            return false;
         }
 
         public FuncionarioModel? BuscarPorCpf(string cpf)

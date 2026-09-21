@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<FuncionarioModel>
+﻿@model IEnumerable<FuncionarioModel>
 
 @{
     ViewData["Title"] = "Funcionários";
@@ -44,7 +43,9 @@
                         <th>Cargo</th>
                         <th>CPF</th>
                         <th>Departamento</th>
+                        <th>Cargo</th>
                         <th>Equipamentos</th>
+                        
                     </tr>
                 </thead>
 
@@ -69,26 +70,43 @@
                             <td>
                                 @funcionario.Departamento
                             </td>
-                           
+
+                            <td>
+                                @funcionario.Cargo
+                            </td>
                             <td>
                                 <a asp-controller="Funcionario"
-                                   asp-action="Dispositivos"
+                                   asp-action="Editar"
                                    asp-route-id="@funcionario.Id"
-                                   class="btn btn-primary btn-sm">
-                                    Ver dispositivos
+                                   class="btn btn-secondary btn-sm">
+                                    Editar
                                 </a>
-                            </td>
+                                <a asp-controller="Funcionario"
+                                   asp-action="Excluir"
+                                   asp-route-id="@funcionario.Id"
+                                   class="btn btn-danger btn-sm">
+                                    Excluir
+                                </a>
+
+                                <td>
+                                    <a asp-controller="Funcionario"
+                                       asp-action="Dispositivos"
+                                       asp-route-id="@funcionario.Id"
+                                       class="btn btn-primary btn-sm">
+                                        Ver dispositivos
+                                    </a>
+                                </td>
+
                            
 
+                            </tr>
+                        }
 
-                        </tr>
-                    }
+                    </tbody>
 
-                </tbody>
+                </table>
 
-            </table>
+            </div>
+        }
 
-        </div>
-    }
-
-</div>
+    </div>
