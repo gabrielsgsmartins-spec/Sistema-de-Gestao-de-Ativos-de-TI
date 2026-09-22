@@ -6,7 +6,7 @@ namespace SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces
     {
         List<ManutencaoModel> ListarTodos();
         ManutencaoModel BuscarPorId(int id);
-        void Adicionar(ManutencaoModel manutencao);
+        void Adicionar(ManutencaoModel manutencao, int id);
         void Editar(ManutencaoModel manutencao);
         void Excluir(ManutencaoModel manutencao);
     }

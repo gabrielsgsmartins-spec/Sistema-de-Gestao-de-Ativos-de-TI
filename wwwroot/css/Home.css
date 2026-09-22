@@ -1,207 +1,275 @@
-﻿
+﻿/* =========================
+   DESIGN SYSTEM / VARIÁVEIS
+========================= */
+:root {
+    /* Cores Principais */
+    --bg-main: #f8fafc;
+    --surface-card: #ffffff;
+    --border-subtle: #e2e8f0;
+    --border-strong: #cbd5e1;
+    /* Tipografia */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    /* Sombras */
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+    /* Arredondamento */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+}
+
 /* =========================
-   DASHBOARD
+   CONTAINER PRINCIPAL
 ========================= */
 .dashboard {
-    padding: 30px;
-    max-width: 1400px;
+    max-width: 1380px;
     margin: 0 auto;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f8ff;
+    padding: 32px 24px;
+    background-color: var(--bg-main);
     min-height: 100vh;
+    font-family: var(--font-family);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
 }
 
 /* =========================
    CABEÇALHO
 ========================= */
-
 .dashboard-header {
-    background: linear-gradient(135deg, #0d47a1, #1976d2);
-    color: white;
-    padding: 28px 30px;
-    border-radius: 14px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
     margin-bottom: 28px;
-    box-shadow: 0 6px 18px rgba(13, 71, 161, 0.20);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
 }
+
+    .dashboard-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
+    }
 
     .dashboard-header h1 {
         margin: 0;
-        font-size: 32px;
+        font-size: 24px;
         font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
     }
 
     .dashboard-header p {
-        margin: 8px 0 0;
-        color: #dbeafe;
-        font-size: 16px;
+        margin: 4px 0 0;
+        color: var(--text-secondary);
+        font-size: 14px;
     }
 
 /* =========================
-   CARDS
+   CARDS DE MÉTRICAS
 ========================= */
-
 .dashboard-cards {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
 }
 
 .dashboard-card {
-    background: white;
-    border-radius: 14px;
-    padding: 22px;
-    border: 1px solid #dbeafe;
-    border-left: 5px solid #1976d2;
-    box-shadow: 0 4px 14px rgba(30, 64, 175, 0.08);
-    transition: all 0.2s ease;
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
     .dashboard-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 22px rgba(30, 64, 175, 0.16);
-        border-left-color: #0d47a1;
+        transform: translateY(-2px);
+        border-color: var(--border-strong);
+        box-shadow: var(--shadow-md);
     }
 
     .dashboard-card h2 {
         margin: 0;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600;
-        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
     }
 
     .dashboard-card p {
-        margin: 12px 0 0;
-        font-size: 32px;
+        margin: 8px 0 0;
+        font-size: 28px;
         font-weight: 700;
-        color: #0d47a1;
+        color: var(--text-primary);
+        letter-spacing: -0.03em;
+        line-height: 1;
     }
 
 /* =========================
    ÁREA DE EQUIPAMENTOS
 ========================= */
-
 .equipamentos {
-    background: white;
-    border: 1px solid #dbeafe;
-    border-radius: 14px;
-    padding: 25px;
-    box-shadow: 0 4px 14px rgba(30, 64, 175, 0.08);
+    background: var(--surface-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
 }
 
     .equipamentos h2 {
         margin: 0 0 20px;
-        font-size: 22px;
-        color: #0d47a1;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: -0.01em;
     }
 
     /* =========================
-   TABELA
+   TABELA E ELEMENTOS
 ========================= */
-
     .equipamentos table {
         width: 100%;
-        border-collapse: collapse;
+        border-collapse: separate;
+        border-spacing: 0;
     }
 
-    .equipamentos thead {
-        background: #e3f2fd;
-    }
-
-    .equipamentos th {
-        padding: 15px 16px;
+    .equipamentos thead th {
+        background: var(--bg-main);
+        padding: 12px 16px;
         text-align: left;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 600;
-        color: #0d47a1;
-        border-bottom: 2px solid #90caf9;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary);
+        border-top: 1px solid var(--border-subtle);
+        border-bottom: 1px solid var(--border-subtle);
     }
+
+        .equipamentos thead th:first-child {
+            border-top-left-radius: var(--radius-sm);
+            border-bottom-left-radius: var(--radius-sm);
+            border-left: 1px solid var(--border-subtle);
+        }
+
+        .equipamentos thead th:last-child {
+            border-top-right-radius: var(--radius-sm);
+            border-bottom-right-radius: var(--radius-sm);
+            border-right: 1px solid var(--border-subtle);
+        }
 
     .equipamentos td {
         padding: 14px 16px;
         font-size: 14px;
-        color: #475569;
-        border-bottom: 1px solid #e5efff;
+        color: var(--text-secondary);
+        border-bottom: 1px solid var(--border-subtle);
+        vertical-align: middle;
     }
 
+        .equipamentos td strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
     .equipamentos tbody tr {
-        transition: background 0.2s ease;
+        transition: background-color 0.15s ease;
     }
 
         .equipamentos tbody tr:hover {
-            background: #f0f7ff;
+            background-color: #f1f5f9;
         }
 
         .equipamentos tbody tr:last-child td {
             border-bottom: none;
         }
 
-    /* =========================
-   TEXTO SEM EQUIPAMENTOS
-========================= */
-
-    .equipamentos > p {
-        color: #64748b;
-        background: #eff6ff;
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 4px solid #1976d2;
+    /* Número de Série */
+    .equipamentos code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 12px;
+        background-color: #f1f5f9;
+        color: #334155;
+        padding: 3px 8px;
+        border-radius: 4px;
+        border: 1px solid #e2e8f0;
     }
+
+/* =========================
+   BADGES DE STATUS
+========================= */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.status-disponivel {
+    background-color: #dcfce7;
+    color: #15803d;
+}
+
+.status-uso {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+}
+
+.status-manutencao {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+.status-default {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+
+/* =========================
+   ESTADO VAZIO
+========================= */
+.equipamentos > p {
+    color: var(--text-secondary);
+    background: var(--bg-main);
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--border-strong);
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+}
 
 /* =========================
    RESPONSIVIDADE
 ========================= */
-
-@media (max-width: 1100px) {
-
-    .dashboard-cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 800px) {
-
+@media (max-width: 768px) {
     .dashboard {
+        padding: 16px;
+    }
+
+    .dashboard-header {
         padding: 20px;
     }
 
-    .dashboard-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .equipamentos {
+        padding: 16px;
         overflow-x: auto;
     }
 
         .equipamentos table {
-            min-width: 700px;
+            min-width: 600px;
         }
 }
-
-@media (max-width: 500px) {
-
-    .dashboard {
-        padding: 15px;
-    }
-
-    .dashboard-header {
-        padding: 22px;
-    }
-
-        .dashboard-header h1 {
-            font-size: 26px;
-        }
-
-    .dashboard-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard-card p {
-        font-size: 28px;
-    }
-
-    .equipamentos {
-        padding: 18px;
-    }
-}
-

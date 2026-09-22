@@ -31,6 +31,7 @@ namespace SistemadeGestãodeAtivosdeTI.Controllers
 
             ViewData["ReturnUrl"] = returnUrl;
             return View();
+
         }
 
         [HttpPost]

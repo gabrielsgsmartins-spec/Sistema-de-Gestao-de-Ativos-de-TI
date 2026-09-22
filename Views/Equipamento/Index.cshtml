@@ -1,15 +1,19 @@
-﻿@model IEnumerable<EquipamentoModel>
+﻿@using SistemadeGestãodeAtivosdeTI.Enums
+@using SistemadeGestãodeAtivosdeTI.Models
+
+@model IEnumerable<EquipamentoModel>
 
 @{
     ViewData["Title"] = "Equipamentos";
 }
 
-<div class="container mt-4">
+<div class="container mt-4 equipamentos-page">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h1>Equipamentos</h1>
-            <p class="text-muted">
+
+            <p class="text-muted mb-0">
                 Gerenciamento dos equipamentos de TI
             </p>
         </div>
@@ -41,7 +45,7 @@
                         <th>Número de Série</th>
                         <th>Status</th>
                         <th>Data de Compra</th>
-                        <th>Ações</th>
+                        <th class="text-end">Ações</th>
                     </tr>
                 </thead>
 
@@ -68,14 +72,37 @@
                             </td>
 
                             <td>
-                                @equipamento.Status
+                                @if (equipamento.Status == StatusEquipamentoEnum.EmUso)
+                                {
+                                    <span class="badge bg-danger">
+                                        Em Uso
+                                    </span>
+                                }
+                                else if (equipamento.Status == StatusEquipamentoEnum.EmManutencao)
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Em Manutenção
+                                    </span>
+                                }
+                                else if (equipamento.Status == StatusEquipamentoEnum.Disponível)
+                                {
+                                    <span class="badge bg-success">
+                                        Disponível
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        @equipamento.Status
+                                    </span>
+                                }
                             </td>
 
                             <td>
                                 @equipamento.DataCompra.ToString("dd/MM/yyyy")
                             </td>
 
-                            <td>
+                            <td class="text-end">
 
                                 <a asp-controller="Equipamento"
                                    asp-action="Editar"
@@ -91,6 +118,33 @@
                                     Atribuir
                                 </a>
 
+                                @if (equipamento.Status != StatusEquipamentoEnum.EmManutencao)
+                                {
+                                    <a asp-controller="Equipamento"
+                                       asp-action="EmManutencao"
+                                       asp-route-id="@equipamento.Id"
+                                       class="btn btn-sm btn-outline-warning">
+                                        Enviar a Manutenção
+                                    </a>
+                                }
+                                @if (equipamento.Status == StatusEquipamentoEnum.EmManutencao)
+                                {
+                                    <form asp-controller="Equipamento"
+                                          asp-action="FinalizarManutencao"
+                                          asp-route-id="@equipamento.Id"
+                                          method="post"
+                                          class="d-inline"
+                                          onsubmit="return confirmarFinalizacaoManutencao();">
+
+                                        @Html.AntiForgeryToken()
+
+                                        <button type="submit"
+                                                class="btn btn-sm btn-outline-success">
+                                            Finalizar Manutenção
+                                        </button>
+
+                                    </form>
+                                }
                             </td>
 
                         </tr>
@@ -102,5 +156,11 @@
 
         </div>
     }
-
 </div>
+<script>
+    function confirmarFinalizacaoManutencao() {
+        return confirm(
+            "Tem certeza que deseja finalizar a manutenção e retornar este equipamento para uso?"
+        );
+    }
+</script>

@@ -12,8 +12,10 @@ namespace SistemadeGestãodeAtivosdeTI.Services
             _manutencaoRepositorio = manutencaoRepositorio;
         }
 
-        public void Cadastrar(ManutencaoModel manutencao)
+        public void Cadastrar(ManutencaoModel manutencao, int equipamentoId)
         {
+            manutencao.EquipamentoId = equipamentoId;
+
             if (manutencao.EquipamentoId <= 0)
             {
                 throw new Exception("Equipamento inválido.");
@@ -31,7 +33,7 @@ namespace SistemadeGestãodeAtivosdeTI.Services
 
             manutencao.Concluida = false;
 
-            _manutencaoRepositorio.Adicionar(manutencao);
+            _manutencaoRepositorio.Adicionar(manutencao, equipamentoId);
         }
 
         public void Finalizar(int id)

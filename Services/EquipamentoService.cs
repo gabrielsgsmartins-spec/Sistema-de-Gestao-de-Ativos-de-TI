@@ -1,5 +1,6 @@
 ﻿using SistemadeGestãodeAtivosdeTI.Enums;
 using SistemadeGestãodeAtivosdeTI.Models;
+using SistemadeGestãodeAtivosdeTI.Repositorios;
 using SistemadeGestãodeAtivosdeTI.Repositorios.Interfaces;
 
 namespace SistemadeGestãodeAtivosdeTI.Services
@@ -28,7 +29,32 @@ namespace SistemadeGestãodeAtivosdeTI.Services
 
             _equipamentoRepositorio.Adicionar(equipamento);
         }
+        public void EmManutencao(int equipamentoId, string descricaoProblema)
+        {
+            var equipamento = _equipamentoRepositorio.BuscarPorId(equipamentoId);
 
+            if (equipamento == null)
+            {
+                throw new Exception("Equipamento não encontrado");
+            }
+
+            if (equipamento.Status == StatusEquipamentoEnum.EmManutencao)
+            {
+                throw new Exception("Este equipamento já está em manutenção");
+            }
+
+            equipamento.Status = StatusEquipamentoEnum.EmManutencao;
+            _equipamentoRepositorio.Editar(equipamento);
+
+            var manutencao = new ManutencaoModel
+            {
+                EquipamentoId = equipamentoId,
+                DescricaoProblema = descricaoProblema,
+                DataInicio = DateTime.Now
+            };
+
+            _manutencaoRepositorio.Adicionar(manutencao, equipamentoId);
+        }
         public void Atribuir(int equipamentoId, int funcionarioId)
         {
             var equipamento = _equipamentoRepositorio.BuscarPorId(equipamentoId);
@@ -47,7 +73,7 @@ namespace SistemadeGestãodeAtivosdeTI.Services
             {
                 throw new Exception("O equipamento já está atribuído a outro funcionário.");
             }
-    
+
 
             equipamento.FuncionarioId = funcionarioId;
             equipamento.Status = StatusEquipamentoEnum.EmUso;
@@ -114,7 +140,7 @@ namespace SistemadeGestãodeAtivosdeTI.Services
             }
 
             equipamento.Status = StatusEquipamentoEnum.Disponível;
-
+            var manutencao = _manutencaoRepositorio.BuscarPorId(equipamentoId);
             _equipamentoRepositorio.Editar(equipamento);
         }
 

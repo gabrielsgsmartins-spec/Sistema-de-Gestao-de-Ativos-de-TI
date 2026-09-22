@@ -23,7 +23,7 @@ namespace SistemadeGestãodeAtivosdeTI.Repositorios
             return _context.Manutencoes.FirstOrDefault(x => x.Id == id);
         }
 
-        public void Adicionar(ManutencaoModel manutencao)
+        public void Adicionar(ManutencaoModel manutencao, int id)
         {
             _context.Manutencoes.Add(manutencao);
             _context.SaveChanges();
